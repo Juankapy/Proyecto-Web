@@ -42,5 +42,6 @@
     </footer>
     <script src="js/script.js"></script>
     <script src="js/busqueda.js"></script>
+    <script src="js/busqueda-artista.js"></script>
 </body>
 </html>
