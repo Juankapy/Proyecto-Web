@@ -30,19 +30,16 @@
                     <i class="fa-regular fa-eye icono-derecha"></i>
                 </div>
 
-                <label for="tipo_usuario">Tipo de usuario</label>
-                <div class="grupo-entrada">
-                    <select id="tipo_usuario" name="tipo_usuario" style="padding-left: 1em;">
-                        <option value="usuario_normal">Usuario Normal</option>
-                        <option value="artista">Artista</option>
-                    </select>
-                </div>
-
                 <button type="submit" class="boton-enviar">Registrarse</button>
+                
+                <div style="text-align: center; margin-top: 15px;">
+                    <span style="color: var(--dark-gray); font-size: 0.9em;">¿Eres un artista?</span>
+                    <a href="index.php?action=registro_artista" style="color: var(--primary-purple); font-weight: bold; font-size: 0.9em; text-decoration: none;">Crea tu cuenta de artista aquí</a>
+                </div>
             </form>
             
             <p style="font-size: 0.8em; text-align: center; margin-top: 15px; color: var(--dark-gray);">
-                Al registrarte, aceptas nuestra <a href="#" style="color: var(--primary-purple);">Política de Privacidad</a> y <a href="#" style="color: var(--primary-purple);">Términos de Servicio</a>.
+                Al registrarte, aceptas nuestra <a href="" style="color: var(--primary-purple);">Política de Privacidad</a> y <a href="#" style="color: var(--primary-purple);">Términos de Servicio</a>.
             </p>
         </div>
     </main>

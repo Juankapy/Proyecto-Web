@@ -127,6 +127,76 @@ class AuthController {
         }
     }
 
+    public function showRegisterArtist() {
+        $extraCss = 'css/styleLogin.css?v=' . time();
+        require_once '../app/Vista/layouts/header.php';
+        require_once '../app/Vista/auth/registro-artista.php';
+        require_once '../app/Vista/layouts/footer.php';
+    }
+
+    public function processRegisterArtist() {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nombre = trim($_POST['nombre']);
+            $nombre_artistico = trim($_POST['nombre_artistico']);
+            $email = trim($_POST['email']);
+            $password = $_POST['password'];
+            $confirm_password = $_POST['confirm_password'];
+            $tipo_usuario = 'artista'; // Forzado
+            $genero = $_POST['genero_musical'];
+
+            if (empty($nombre) || empty($nombre_artistico) || empty($email) || empty($password) || empty($confirm_password) || empty($genero)) {
+                header("Location: index.php?action=registro_artista&error=empty_fields");
+                exit();
+            }
+
+            if ($password !== $confirm_password) {
+                header("Location: index.php?action=registro_artista&error=password_mismatch");
+                exit();
+            }
+
+            $database = new Database();
+            $db = $database->conectar();
+
+            if ($db) {
+                $query = "SELECT usuario_id FROM usuario WHERE email = :email";
+                $stmt = $db->prepare($query);
+                $stmt->bindParam(':email', $email);
+                $stmt->execute();
+
+                if ($stmt->rowCount() > 0) {
+                    header("Location: index.php?action=registro_artista&error=email_exists");
+                    exit();
+                } else {
+                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                    
+                    // 1. Insertar Usuario
+                    $query = "INSERT INTO usuario (nombre_usuario, email, contrasena, rol) VALUES (:nombre, :email, :password, :rol)";
+                    $stmt = $db->prepare($query);
+                    $stmt->bindParam(':nombre', $nombre);
+                    $stmt->bindParam(':email', $email);
+                    $stmt->bindParam(':password', $hashed_password);
+                    $stmt->bindParam(':rol', $tipo_usuario);
+
+                    if ($stmt->execute()) {
+                        // TODO: Aquí deberíamos insertar en la tabla 'artista' con $nombre_artistico y $genero
+                        // Por ahora solo registramos el usuario para permitir login
+                        header("Location: index.php?action=login&success=artist_registered");
+                        exit();
+                    } else {
+                        header("Location: index.php?action=registro_artista&error=stmtfailed");
+                        exit();
+                    }
+                }
+            } else {
+                header("Location: index.php?action=registro_artista&error=db_connection");
+                exit();
+            }
+        } else {
+            header("Location: index.php?action=registro_artista");
+            exit();
+        }
+    }
+
     public function logout() {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();

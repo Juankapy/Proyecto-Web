@@ -26,6 +26,14 @@ switch ($action) {
         $controller = new AuthController();
         $controller->processRegister();
         break;
+    case 'registro_artista':
+        $controller = new AuthController();
+        $controller->showRegisterArtist();
+        break;
+    case 'auth_register_artist':
+        $controller = new AuthController();
+        $controller->processRegisterArtist();
+        break;
     case 'logout':
         $controller = new AuthController();
         $controller->logout();
