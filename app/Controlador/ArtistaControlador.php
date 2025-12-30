@@ -2,10 +2,12 @@
 
 require_once __DIR__ . '/Controller.php';
 require_once __DIR__ . '/../Services/SpotifyService.php';
+require_once __DIR__ . '/GeniusControlador.php';
 
 class ArtistaControlador extends Controller {
     
     private $spotify;
+    private $genius;
     
     public function __construct() {
         // Credenciales deberían estar en config, pero las mantenemos aquí por consistencia con el proyecto actual
@@ -42,6 +44,7 @@ class ArtistaControlador extends Controller {
                 'imagen_perfil' => $artistData['images'][1]['url'] ?? ($artistData['images'][0]['url'] ?? 'multimedia/img/default-artist.jpg'),
                 'seguidores' => number_format($artistData['followers']['total']),
                 'biografia' => $this->generarBiografia($artistData),
+                'generos' => $artistData['genres'] ?? [],
                 'albumes' => [],
                 'canciones_populares' => [],
                 // Datos Mock para estilo Genius
@@ -71,10 +74,44 @@ class ArtistaControlador extends Controller {
                     'miniatura_url' => $track['album']['images'][0]['url'] ?? 'multimedia/img/default-song.jpg', // Para las cards estilo Genius
                     'artista_nombre' => $track['artists'][0]['name'],
                     'album_nombre' => $track['album']['name'] ?? '',
-                    'vistas_formateadas' => $this->formatearVistas($track['popularity']), // Simulado basado en popularidad
+                'vistas_formateadas' => $this->formatearVistas($track['popularity']), // Simulado basado en popularidad
                     'duracion_formateada' => sprintf("%d:%02d", $minutes, $seconds)
                 ];
             }
+
+            // --- NUEVO: Obtener TODAS las canciones (de los álbumes) ---
+            $todasLasCanciones = [];
+            $trackIds = []; // Para evitar duplicados
+
+            // Agregar primero las populares
+            foreach ($artista->canciones_populares as $popSong) {
+                $todasLasCanciones[] = $popSong;
+                $trackIds[$popSong->id] = true;
+            }
+
+            // Recorrer los primeros 10 álbumes para obtener más canciones
+            $albumsLimitados = array_slice($albums, 0, 10);
+            
+            foreach ($albumsLimitados as $album) {
+                $albumTracks = $this->spotify->getAlbumTracks($album['id']);
+                
+                foreach ($albumTracks as $track) {
+                    if (!isset($trackIds[$track['id']])) {
+                        $todasLasCanciones[] = (object)[
+                            'id' => $track['id'],
+                            'titulo' => $track['name'],
+                            'miniatura_url' => $album['images'][2]['url'] ?? ($album['images'][0]['url'] ?? 'multimedia/img/default-song.jpg'),
+                            'artista_nombre' => $track['artists'][0]['name'],
+                            'album_nombre' => $album['name'],
+                            'vistas_formateadas' => '', // No disponible en endpoint de album-tracks
+                            'duracion_formateada' => '' // No necesario para búsqueda simple
+                        ];
+                        $trackIds[$track['id']] = true;
+                    }
+                }
+            }
+            
+            $artista->todas_las_canciones = $todasLasCanciones;
             
             // Cargar vista
             require __DIR__ . '/../Vista/artista.php';
@@ -86,8 +123,24 @@ class ArtistaControlador extends Controller {
     }
     
     private function generarBiografia($data) {
-        // En un caso real, esto vendría de la BD o API de Genius
-        // Por ahora mantenemos la lógica simulada pero limpia
+        // Fetch Real Biography from Genius
+        if (!isset($this->genius)) {
+            $this->genius = new GeniusControlador();
+        }
+
+        $nombreArtista = $data['name'];
+        $geniusId = $this->genius->obtenerIdArtista($nombreArtista);
+        
+        if ($geniusId) {
+            $bio = $this->genius->obtenerBiografia($geniusId);
+            if ($bio) {
+                // Genius 'plain' description might still contain some markdown, but should be mostly text.
+                // We'll trust it's what we want. 
+                return $bio;
+            }
+        }
+        
+        // Fallback if Genius fails
          return "Perfil oficial de {$data['name']} en nuestra plataforma. " . 
                "Con {$data['followers']['total']} seguidores en Spotify, " . 
                "se posiciona como uno de los artistas destacados del género " . 

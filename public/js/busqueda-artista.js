@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (matches.length > 0) {
                 matches.slice(0, 10).forEach(song => { // Límite visual de 10
                     const item = document.createElement('a');
-                    item.href = '#'; // Enlace simulado
+                    item.href = `index.php?action=cancion&id=${song.id}`; // Enlace real
                     item.className = 'song-card'; // Reuse styled card
                     // Override styles for list view if needed, or stick to cards
                     item.style.marginBottom = '5px';

@@ -80,8 +80,19 @@ class SpotifyService {
         return $result['items'] ?? [];
     }
 
+    public function getAlbumTracks($albumId) {
+        $url = "https://api.spotify.com/v1/albums/{$albumId}/tracks?limit=50";
+        $result = $this->request($url);
+        return $result['items'] ?? [];
+    }
+
     public function getAlbum($albumId) {
         $url = "https://api.spotify.com/v1/albums/{$albumId}";
+        return $this->request($url);
+    }
+
+    public function getTrack($trackId) {
+        $url = "https://api.spotify.com/v1/tracks/{$trackId}";
         return $this->request($url);
     }
 

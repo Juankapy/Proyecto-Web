@@ -41,17 +41,25 @@ require __DIR__ . '/layouts/header.php';
                 }
                 ?>
             </div>
+            
+            <?php if (!empty($artista->generos)): ?>
+            <div class="artist-genres">
+                <?php foreach (array_slice($artista->generos, 0, 5) as $genero): ?>
+                    <span class="genre-tag"><?php echo htmlspecialchars(ucfirst($genero)); ?></span>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
         </div>
     </aside>
     
     <main class="artist-content">
         
         <section class="content-section">
-            <h2 class="section-title">POPULAR <?php echo strtoupper(htmlspecialchars($artista->nombre_artistico)); ?> SONGS</h2>
+            <h2 class="section-title" style="color: #6F00D0; font-size: 1.5em;">CANCIONES POPULARES DE <?php echo strtoupper(htmlspecialchars($artista->nombre_artistico)); ?></h2>
             
             <div class="songs-grid">
                 <?php foreach (array_slice($artista->canciones_populares, 0, 8) as $cancion): ?>
-                <a href="#" class="song-card">
+                <a href="index.php?action=cancion&id=<?php echo $cancion->id; ?>" class="song-card">
                     <div class="song-card-image">
                         <img src="<?php echo htmlspecialchars($cancion->miniatura_url); ?>" alt="Cover">
                     </div>
@@ -70,16 +78,16 @@ require __DIR__ . '/layouts/header.php';
         <section class="content-section">
             <div class="search-container-full">
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input type="text" id="buscador-canciones-artista" placeholder="Show all songs by <?php echo htmlspecialchars($artista->nombre_artistico); ?>">
+                <input type="text" id="buscador-canciones-artista" placeholder="Ver todas las canciones de <?php echo htmlspecialchars($artista->nombre_artistico); ?>" style="color: #6F00D0;">
             </div>
             <div id="resultados-busqueda-artista" class="resultados-busqueda"></div>
         </section>
         
         <section class="content-section">
-            <h2 class="section-title">ALBUMS</h2>
+            <h2 class="section-title" style="color: #6F00D0; font-size: 1.5em;">ÁLBUMES</h2>
             <div class="albums-grid-creative">
                 <?php foreach ($artista->albumes as $index => $album): ?>
-                    <a href="#" class="album-item item-<?php echo ($index % 6) + 1; ?>">
+                    <a href="index.php?action=album&id=<?php echo $album->id; ?>" class="album-item item-<?php echo ($index % 6) + 1; ?>">
                         <div class="album-cover-wrapper">
                             <img src="<?php echo htmlspecialchars($album->portada_url); ?>" alt="<?php echo htmlspecialchars($album->nombre_album); ?>">
                             <div class="album-overlay-info">
@@ -97,7 +105,7 @@ require __DIR__ . '/layouts/header.php';
 
 <script type="application/json" id="artist-songs-data">
 <?php 
-    echo json_encode($artista->canciones_populares); 
+    echo json_encode($artista->todas_las_canciones); 
 ?>
 </script>
 

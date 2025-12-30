@@ -8,8 +8,19 @@ require_once '../app/Controlador/Controller.php';
 require_once '../app/Controlador/AuthController.php';
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'home';
+$id = isset($_GET['id']) ? $_GET['id'] : null;
 
 switch ($action) {
+    case 'cancion':
+        require_once '../app/Controlador/CancionControlador.php';
+        $controller = new CancionControlador();
+        $controller->mostrar($id);
+        break;
+    case 'album':
+        require_once '../app/Controlador/AlbumControlador.php';
+        $controller = new AlbumControlador();
+        $controller->mostrar($id);
+        break;
     case 'login':
         $controller = new AuthController();
         $controller->showLogin();
