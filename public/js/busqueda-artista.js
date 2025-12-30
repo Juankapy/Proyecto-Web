@@ -5,9 +5,9 @@
 
 function toggleBiografia(e) {
     e.preventDefault();
-    const bioOculta = document.querySelector('.bio-oculta');
-    const link = document.querySelector('.read-more-link');
-    const bioVisible = document.querySelector('.bio-visible');
+    const bioOculta = document.querySelector('.biografia-oculta');
+    const link = document.querySelector('.enlace-leer-mas');
+    const bioVisible = document.querySelector('.biografia-visible');
 
     if (bioOculta && link) {
         if (bioOculta.style.display === 'none') {
@@ -23,7 +23,7 @@ function toggleBiografia(e) {
 
 document.addEventListener('DOMContentLoaded', function () {
     // 1. Cargar datos del script JSON
-    const dataScript = document.getElementById('artist-songs-data');
+    const dataScript = document.getElementById('datos-canciones-artista');
     let allSongs = [];
 
     if (dataScript) {
@@ -55,23 +55,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 matches.slice(0, 10).forEach(song => { // Límite visual de 10
                     const item = document.createElement('a');
                     item.href = `index.php?action=cancion&id=${song.id}`; // Enlace real
-                    item.className = 'song-card'; // Reuse styled card
+                    item.className = 'tarjeta-cancion'; // Reuse styled card
                     // Override styles for list view if needed, or stick to cards
                     item.style.marginBottom = '5px';
 
                     item.innerHTML = `
-                        <div class="song-card-image" style="width: 40px; height: 40px; margin-right: 10px;">
+                        <div class="imagen-tarjeta-cancion" style="width: 40px; height: 40px; margin-right: 10px;">
                             <img src="${song.miniatura_url}" alt="Cover">
                         </div>
-                        <div class="song-card-info">
-                            <h3 class="song-card-title" style="font-size: 0.9rem;">${song.titulo}</h3>
-                            <p class="song-card-artist" style="font-size: 0.8rem;">${song.album_nombre}</p>
+                        <div class="info-tarjeta-cancion">
+                            <h3 class="titulo-tarjeta-cancion" style="font-size: 0.9rem;">${song.titulo}</h3>
+                            <p class="artista-tarjeta-cancion" style="font-size: 0.8rem;">${song.album_nombre}</p>
                         </div>
                     `;
                     container.appendChild(item);
                 });
             } else {
-                container.innerHTML = '<div style="padding: 10px; color: #999;">No results found.</div>';
+                container.innerHTML = '<div style="padding: 10px; color: #999;">No se encontraron resultados.</div>';
             }
         });
     }

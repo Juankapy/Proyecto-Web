@@ -12,7 +12,7 @@ body {
     font-family: 'Helvetica Neue', 'Arial', sans-serif;
 }
 
-.artist-hero-container {
+.contenedor-hero-artista {
     width: 100%;
     height: 400px;
     /* Increased height for better parallax impact */
@@ -22,7 +22,7 @@ body {
     z-index: 1;
 }
 
-.hero-image {
+.imagen-hero {
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -32,7 +32,7 @@ body {
     /* KEY for Parallax */
 }
 
-.hero-overlay {
+.superposicion-hero {
     position: absolute;
     top: 0;
     left: 0;
@@ -43,7 +43,7 @@ body {
             rgba(0, 0, 0, 0.6) 100%);
 }
 
-.artist-main-container {
+.contenedor-principal-artista {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px 80px;
@@ -54,7 +54,7 @@ body {
     z-index: 10;
 }
 
-.artist-sidebar {
+.barra-lateral-artista {
     position: sticky;
     top: 40px;
     /* Adjusted for better spacing */
@@ -63,7 +63,7 @@ body {
     padding-top: 0;
 }
 
-.profile-image-container {
+.contenedor-imagen-perfil {
     width: 200px;
     height: 200px;
     margin: 0 auto 20px;
@@ -74,13 +74,13 @@ body {
     background-color: #eee;
 }
 
-.profile-image {
+.imagen-perfil {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.artist-name {
+.nombre-artista {
     font-size: 2.5rem;
     font-weight: 800;
     color: var(--negro-texto);
@@ -90,11 +90,11 @@ body {
 
 
 
-.artist-actions {
+.acciones-artista {
     margin-bottom: 30px;
 }
 
-.btn-follow {
+.boton-seguir {
     background-color: white;
     border: 2px solid var(--negro-texto);
     color: var(--negro-texto);
@@ -106,17 +106,17 @@ body {
     transition: all 0.2s ease;
 }
 
-.btn-follow:hover {
+.boton-seguir:hover {
     background-color: var(--negro-texto);
     color: white;
 }
 
-.artist-about-section {
+.seccion-sobre-artista {
     text-align: left;
     margin-top: 30px;
 }
 
-.about-title {
+.titulo-sobre {
     font-size: 1.2em;
     font-weight: 700;
     text-transform: uppercase;
@@ -125,7 +125,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-.contributors-count {
+.contador-contribuyentes {
     font-size: 0.9rem;
     color: var(--negro-texto);
     text-decoration: underline;
@@ -133,13 +133,13 @@ body {
     cursor: pointer;
 }
 
-.artist-bio-text {
+.texto-biografia-artista {
     font-size: 1rem;
     line-height: 1.6;
     color: #333;
 }
 
-.read-more-link {
+.enlace-leer-mas {
     color: var(--morado-brand);
     text-decoration: none;
     font-weight: 600;
@@ -147,14 +147,14 @@ body {
     margin-left: 5px;
 }
 
-.artist-genres {
+.generos-artista {
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
 
-.genre-tag {
+.etiqueta-genero {
     display: inline-block;
     padding: 4px 12px;
     background-color: rgba(111, 0, 208, 0.1);
@@ -167,16 +167,16 @@ body {
     border: 1px solid rgba(111, 0, 208, 0.2);
 }
 
-.genre-tag:hover {
+.etiqueta-genero:hover {
     background-color: rgba(111, 0, 208, 0.2);
     transform: translateY(-1px);
 }
 
-.artist-content {
+.contenido-artista {
     margin-top: 130px;
 }
 
-.section-title {
+.titulo-seccion {
     font-size: 0.85rem;
     color: var(--gris-claro);
     font-weight: 700;
@@ -187,17 +187,17 @@ body {
     padding-bottom: 10px;
 }
 
-.content-section {
+.seccion-contenido {
     margin-bottom: 50px;
 }
 
-.songs-grid {
+.cuadricula-canciones {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
-.song-card {
+.tarjeta-cancion {
     display: flex;
     align-items: center;
     background: white;
@@ -207,12 +207,12 @@ body {
     transition: all 0.2s;
 }
 
-.song-card:hover {
+.tarjeta-cancion:hover {
     background-color: #e1cfef;
     border-color: #eee;
 }
 
-.song-card-image {
+.imagen-tarjeta-cancion {
     width: 60px;
     height: 60px;
     flex-shrink: 0;
@@ -220,18 +220,18 @@ body {
     background-color: #eee;
 }
 
-.song-card-image img {
+.imagen-tarjeta-cancion img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.song-card-info {
+.info-tarjeta-cancion {
     flex-grow: 1;
     min-width: 0;
 }
 
-.song-card-title {
+.titulo-tarjeta-cancion {
     font-size: 1rem;
     font-weight: 700;
     color: var(--negro-texto);
@@ -241,13 +241,13 @@ body {
     text-overflow: ellipsis;
 }
 
-.song-card-artist {
+.artista-tarjeta-cancion {
     font-size: 0.85rem;
     color: var(--gris-claro);
     margin: 0 0 4px 0;
 }
 
-.song-card-views {
+.vistas-tarjeta-cancion {
     font-size: 0.75rem;
     color: var(--gris-claro);
     display: flex;
@@ -255,7 +255,7 @@ body {
     gap: 5px;
 }
 
-.search-container-full {
+.contenedor-busqueda-completo {
     position: relative;
     border: 2px solid var(--negro-texto);
     padding: 15px 20px;
@@ -264,13 +264,13 @@ body {
     background: white;
 }
 
-.search-icon {
+.icono-busqueda {
     font-size: 1.2rem;
     margin-right: 15px;
     color: var(--negro-texto);
 }
 
-.search-container-full input {
+.contenedor-busqueda-completo input {
     border: none;
     outline: none;
     width: 100%;
@@ -283,7 +283,7 @@ body {
     margin-top: 10px;
 }
 
-.resultado-item-list {
+.elemento-lista-resultados {
     display: block;
     padding: 12px;
     border-bottom: 1px solid #eee;
@@ -292,23 +292,23 @@ body {
     transition: background 0.2s;
 }
 
-.resultado-item-list:hover {
+.elemento-lista-resultados:hover {
     background-color: #f9f9f9;
 }
 
-.albums-grid-creative {
+.cuadricula-albumes-creativa {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
-.album-item {
+.elemento-album {
     text-decoration: none;
     color: inherit;
     display: block;
 }
 
-.album-cover-wrapper {
+.envoltura-portada-album {
     position: relative;
     width: 100%;
     aspect-ratio: 1;
@@ -317,7 +317,7 @@ body {
     background-color: #333;
 }
 
-.album-cover-wrapper img {
+.envoltura-portada-album img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -325,12 +325,12 @@ body {
     filter: grayscale(20%);
 }
 
-.album-item:hover .album-cover-wrapper img {
+.elemento-album:hover .envoltura-portada-album img {
     transform: scale(1.05);
     filter: grayscale(0%);
 }
 
-.album-overlay-info {
+.info-superpuesta-album {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -342,11 +342,11 @@ body {
     transition: opacity 0.3s;
 }
 
-.album-item:hover .album-overlay-info {
+.elemento-album:hover .info-superpuesta-album {
     opacity: 1;
 }
 
-.album-title-simple {
+.titulo-album-simple {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--negro-texto);
@@ -355,28 +355,28 @@ body {
 
 /* Responsive */
 @media (max-width: 900px) {
-    .artist-main-container {
+    .contenedor-principal-artista {
         grid-template-columns: 1fr;
         text-align: center;
         padding-top: 60px;
     }
 
-    .artist-sidebar {
+    .barra-lateral-artista {
         position: static;
         margin-bottom: 40px;
     }
 
-    .artist-content {
+    .contenido-artista {
         margin-top: 0;
     }
 
-    .artist-about-section {
+    .seccion-sobre-artista {
         text-align: center;
         max-width: 600px;
         margin: 30px auto 0;
     }
 
-    .songs-grid {
+    .cuadricula-canciones {
         grid-template-columns: 1fr;
     }
 }

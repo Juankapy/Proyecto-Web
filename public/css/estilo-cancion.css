@@ -22,7 +22,7 @@ main.contenedor-cancion {
     font-family: 'Open Sans', sans-serif;
 }
 
-.layout-desglose {
+.diseño-desglose {
     display: grid;
     grid-template-columns: 350px 1fr;
     /* Sidebar fijo 350px, Resto letras */
@@ -31,7 +31,7 @@ main.contenedor-cancion {
 }
 
 /* Sidebar Info (Sticky) */
-.panel-info {
+.panel-informacion {
     position: sticky;
     top: 40px;
     /* Se queda fijo al scrollear */
@@ -40,7 +40,7 @@ main.contenedor-cancion {
     gap: 20px;
 }
 
-.cancion-cover-large {
+.portada-cancion-grande {
     width: 100%;
     aspect-ratio: 1/1;
     border-radius: 8px;
@@ -48,17 +48,17 @@ main.contenedor-cancion {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.cancion-cover-large img {
+.portada-cancion-grande img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.info-meta {
+.info-metadatos {
     text-align: left;
 }
 
-.titulo-meta {
+.titulo-metadatos {
     font-size: 2rem;
     font-weight: 800;
     line-height: 1.1;
@@ -66,14 +66,14 @@ main.contenedor-cancion {
     color: var(--cancion-text-main);
 }
 
-.artista-meta {
+.artista-metadatos {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--cancion-primary);
     margin: 0 0 15px 0;
 }
 
-.detalles-meta p {
+.detalles-metadatos p {
     color: var(--cancion-text-secondary);
     font-size: 0.95rem;
     margin: 5px 0;
@@ -83,13 +83,13 @@ main.contenedor-cancion {
 }
 
 /* Créditos en Sidebar */
-.creditos-meta {
+.creditos-metadatos {
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid #f3f4f6;
 }
 
-.creditos-meta h3 {
+.creditos-metadatos h3 {
     font-size: 1rem;
     color: var(--cancion-text-main);
     margin-bottom: 15px;
@@ -125,7 +125,7 @@ main.contenedor-cancion {
 }
 
 /* Nueva clase Minimal Letra */
-.heading-letra-minimal {
+.encabezado-letra-minimal {
     font-size: 0.85rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -138,7 +138,7 @@ main.contenedor-cancion {
     gap: 10px;
 }
 
-.heading-letra-minimal::after {
+.encabezado-letra-minimal::after {
     content: '';
     display: block;
     height: 1px;
@@ -179,7 +179,7 @@ main.contenedor-cancion {
     font-family: inherit;
 }
 
-.nota-footer {
+.nota-pie {
     margin-top: 40px;
     padding-top: 20px;
     border-top: 1px solid #e5e7eb;
@@ -193,29 +193,29 @@ main.contenedor-cancion {
 
 /* Responsive */
 @media (max-width: 900px) {
-    .layout-desglose {
+    .diseño-desglose {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
-    .panel-info {
+    .panel-informacion {
         position: static;
         /* Ya no sticky en móvil */
         align-items: center;
         text-align: center;
     }
 
-    .info-meta {
+    .info-metadatos {
         text-align: center;
     }
 
-    .cancion-cover-large {
+    .portada-cancion-grande {
         width: 250px;
         /* Más pequeño en móvil */
         margin: 0 auto;
     }
 
-    .detalles-meta p {
+    .detalles-metadatos p {
         justify-content: center;
     }
 }

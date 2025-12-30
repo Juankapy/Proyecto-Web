@@ -23,7 +23,7 @@ main.contenedor-album {
 }
 
 /* Header Banner */
-.album-header-banner {
+.banner-cabecera-album {
     background-color: var(--album-primary-color);
     padding: 15px 30px;
     border-radius: 8px;
@@ -31,26 +31,26 @@ main.contenedor-album {
     color: white;
 }
 
-.album-title-banner {
+.titulo-banner-album {
     margin: 0;
     font-size: 1.8rem;
     font-weight: 800;
 }
 
 /* Grid Layout */
-.album-content-grid {
+.cuadricula-contenido-album {
     display: grid;
     grid-template-columns: 300px 1fr;
     gap: 50px;
 }
 
 /* Sidebar */
-.album-sidebar {
+.barra-lateral-album {
     display: flex;
     flex-direction: column;
 }
 
-.album-cover-container {
+.contenedor-portada-album {
     width: 100%;
     margin-bottom: 20px;
     border-radius: 12px;
@@ -58,38 +58,38 @@ main.contenedor-album {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.album-cover-img {
+.img-portada-album {
     width: 100%;
     height: auto;
     display: block;
 }
 
-.album-name {
+.nombre-album {
     font-size: 1.8rem;
     font-weight: 800;
     margin-bottom: 5px;
 }
 
-.album-artist {
+.artista-album {
     font-size: 1.2rem;
     color: var(--album-text-secondary);
     font-weight: 400;
     margin-bottom: 15px;
 }
 
-.album-description {
+.descripcion-album {
     font-size: 0.95rem;
     color: var(--album-text-secondary);
     line-height: 1.5;
     margin-bottom: 20px;
 }
 
-.album-actions {
+.acciones-album {
     display: flex;
     gap: 15px;
 }
 
-.btn-icon {
+.boton-icono {
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -99,16 +99,16 @@ main.contenedor-album {
     transition: transform 0.2s;
 }
 
-.btn-icon:hover {
+.boton-icono:hover {
     transform: scale(1.1);
 }
 
 /* Tracks Section */
-.album-tracks {
+.canciones-album {
     width: 100%;
 }
 
-.tracks-header {
+.cabecera-canciones {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #e5e7eb;
@@ -120,7 +120,7 @@ main.contenedor-album {
     font-weight: 600;
 }
 
-.col-title {
+.col-titulo {
     flex: 1;
     font-size: 1.1rem;
     /* "Lista de Canciones" bigger */
@@ -129,25 +129,25 @@ main.contenedor-album {
     font-weight: 700;
 }
 
-.col-heading-title {
+.col-encabezado-titulo {
     width: 40%;
     text-align: left;
     display: none;
     /* Hidden in design or implied */
 }
 
-.col-clock {
+.col-reloj {
     margin-left: auto;
     padding-right: 20px;
 }
 
 /* Track List */
-.tracks-list {
+.lista-canciones {
     display: flex;
     flex-direction: column;
 }
 
-.track-item {
+.elemento-cancion {
     display: flex;
     align-items: center;
     padding: 12px 10px;
@@ -155,41 +155,41 @@ main.contenedor-album {
     transition: background-color 0.2s;
 }
 
-.track-item:hover {
+.elemento-cancion:hover {
     background-color: var(--album-hover-bg);
 }
 
-.track-number {
+.numero-cancion-lista {
     width: 40px;
     color: var(--album-text-secondary);
     font-weight: 500;
 }
 
-.track-info {
+.info-cancion-lista {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.track-title {
+.titulo-cancion-lista {
     font-weight: 700;
     color: var(--album-text-main);
     font-size: 1rem;
 }
 
-.track-artist {
+.artista-cancion-lista {
     font-size: 0.85rem;
     color: var(--album-text-secondary);
 }
 
-.track-duration {
+.duracion-cancion-lista {
     color: var(--album-text-secondary);
     font-weight: 500;
     margin-right: 20px;
     font-size: 0.9rem;
 }
 
-.track-options {
+.opciones-cancion {
     color: var(--album-text-secondary);
     cursor: pointer;
     font-size: 1rem;
@@ -199,21 +199,21 @@ main.contenedor-album {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .album-content-grid {
+    .cuadricula-contenido-album {
         grid-template-columns: 1fr;
         gap: 30px;
     }
 
-    .album-sidebar {
+    .barra-lateral-album {
         text-align: center;
     }
 
-    .album-cover-container {
+    .contenedor-portada-album {
         max-width: 300px;
         margin: 0 auto 20px;
     }
 
-    .album-actions {
+    .acciones-album {
         justify-content: center;
     }
 }

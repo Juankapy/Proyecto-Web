@@ -4,24 +4,25 @@ $extraCss = 'css/estilo-cancion.css';
 require __DIR__ . '/layouts/header.php'; 
 ?>
 
+
 <main class="contenedor-cancion">
     
-    <div class="layout-desglose">
-        <aside class="panel-info">
-            <div class="cancion-cover-large">
+    <div class="diseño-desglose">
+        <aside class="panel-informacion">
+            <div class="portada-cancion-grande">
                 <img src="<?php echo htmlspecialchars($cancion->portada_url); ?>" alt="<?php echo htmlspecialchars($cancion->titulo); ?>">
             </div>
             
-            <div class="info-meta">
-                <h1 class="titulo-meta"><?php echo htmlspecialchars($cancion->titulo); ?></h1>
-                <h2 class="artista-meta"><?php echo htmlspecialchars($cancion->artista); ?></h2>
-                <div class="detalles-meta">
+            <div class="info-metadatos">
+                <h1 class="titulo-metadatos"><?php echo htmlspecialchars($cancion->titulo); ?></h1>
+                <h2 class="artista-metadatos"><?php echo htmlspecialchars($cancion->artista); ?></h2>
+                <div class="detalles-metadatos">
                     <p><i class="fa-solid fa-record-vinyl"></i> <?php echo htmlspecialchars($cancion->album); ?></p>
                     <p><i class="fa-regular fa-clock"></i> <?php echo htmlspecialchars($cancion->duracion); ?></p>
                 </div>
             </div>
 
-            <div class="creditos-meta">
+            <div class="creditos-metadatos">
                 <h3>Créditos</h3>
                 <ul class="lista-creditos-simple">
                     <?php foreach ($cancion->creditos as $credito): ?>
@@ -36,7 +37,7 @@ require __DIR__ . '/layouts/header.php';
 
         <!-- Panel Derecho: Letra Scrolleable -->
         <section class="panel-letra">
-            <h3 class="heading-letra-minimal">Letra</h3>
+            <h3 class="encabezado-letra-minimal">Letra</h3>
             <div class="contenido-letra-limpio">
                 <?php if (!empty($cancion->letra_html)): ?>
                     <div class="letra-real">
