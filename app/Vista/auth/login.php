@@ -12,8 +12,10 @@
                 <label for="password">Contraseña</label>
                 <div class="grupo-entrada">
                     <i class="fa-solid fa-lock icono-izquierda"></i>
-                    <input type="password" id="password" name="password" placeholder="Introduce tu contraseña">
-                    <i class="fa-regular fa-eye icono-derecha"></i>
+                    <div class="contenedor-input-icono">
+                        <input type="password" id="password" name="password" placeholder="Introduce tu contraseña">
+                        <i class="fa-solid fa-eye alternar-contrasena"></i>
+                    </div>
                 </div>
 
                 <a href="#" class="olvido-contrasena">¿Olvidaste tu contraseña?</a>
@@ -35,3 +37,86 @@
             ¿Aún no tienes una cuenta? <a href="index.php?action=register">Regístrate aquí</a>
         </p>
     </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // --- ALERTAS DE ÉXITO ---
+            if (urlParams.has('success')) {
+                const successType = urlParams.get('success');
+                
+                if (successType === 'registered') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Cuenta creada!',
+                        text: 'Te has registrado correctamente. Por favor, inicia sesión.',
+                        confirmButtonColor: '#6F00D0'
+                    });
+                } else if (successType === 'artist_registered') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Bienvenido Artista!',
+                        text: 'Tu perfil de artista ha sido creado. Inicia sesión para empezar.',
+                        confirmButtonColor: '#6F00D0'
+                    });
+                } else if (successType === 'logout') {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true
+                    });
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Has cerrado sesión correctamente'
+                    });
+                }
+                
+                // Limpiar URL
+                window.history.replaceState(null, null, window.location.pathname + '?action=login');
+            }
+
+            // --- ALERTAS DE ERROR ---
+            if (urlParams.has('error')) {
+                const errorType = urlParams.get('error');
+                let title = 'Error';
+                let text = 'Ha ocurrido un error inesperado.';
+
+                switch(errorType) {
+                    case 'wrong_password':
+                        title = 'Contraseña Incorrecta';
+                        text = 'La contraseña que ingresaste no es válida.';
+                        break;
+                    case 'user_not_found':
+                        title = 'Usuario no encontrado';
+                        text = 'No existe una cuenta con ese correo electrónico.';
+                        break;
+                    case 'empty_fields':
+                        title = 'Campos Vacíos';
+                        text = 'Por favor, rellena todos los campos.';
+                        break;
+                    case 'db_connection':
+                        title = 'Error de Conexión';
+                        text = 'No se pudo conectar a la base de datos.';
+                        break;
+                }
+
+                Swal.fire({
+                    icon: 'error',
+                    title: title,
+                    text: text,
+                    confirmButtonColor: '#d33'
+                }).then(() => {
+                    // Limpiar URL
+                    window.history.replaceState(null, null, window.location.pathname + '?action=login');
+                });
+            }
+        });
+
+        function validarLogin() {
+            // Validación front-end adicional si se desea
+            return true;
+        }
+    </script>

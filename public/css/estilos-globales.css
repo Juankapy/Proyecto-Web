@@ -1,0 +1,32 @@
+/* Estilos Globales Extra */
+
+/* Contenedor relativo para posicionar el icono */
+.contenedor-input-icono {
+    position: relative;
+    width: 100%;
+}
+
+/* Asegurar que el input ocupe todo el ancho del contenedor */
+.contenedor-input-icono input {
+    width: 100%;
+    padding-right: 40px;
+    /* Espacio para el icono a la derecha */
+}
+
+/* Estilo del icono de alternar contraseña */
+.alternar-contrasena {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    /* Color gris suave por defecto */
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.alternar-contrasena:hover {
+    color: #6F00D0;
+    /* Morado principal al hacer hover */
+}

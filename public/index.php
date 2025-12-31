@@ -45,6 +45,21 @@ switch ($action) {
         $controller = new AuthController();
         $controller->processRegisterArtist();
         break;
+    case 'perfil':
+        require_once '../app/Controlador/UsuarioControlador.php';
+        $controller = new UsuarioControlador();
+        $controller->perfil();
+        break;
+    case 'editar_perfil':
+        require_once '../app/Controlador/UsuarioControlador.php';
+        $controller = new UsuarioControlador();
+        $controller->editarPerfil();
+        break;
+    case 'actualizar_perfil':
+        require_once '../app/Controlador/UsuarioControlador.php';
+        $controller = new UsuarioControlador();
+        $controller->actualizarPerfil();
+        break;
     case 'logout':
         $controller = new AuthController();
         $controller->logout();
