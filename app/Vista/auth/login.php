@@ -42,7 +42,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             
-            // --- ALERTAS DE ÉXITO ---
             if (urlParams.has('success')) {
                 const successType = urlParams.get('success');
                 
@@ -74,11 +73,9 @@
                     });
                 }
                 
-                // Limpiar URL
                 window.history.replaceState(null, null, window.location.pathname + '?action=login');
             }
 
-            // --- ALERTAS DE ERROR ---
             if (urlParams.has('error')) {
                 const errorType = urlParams.get('error');
                 let title = 'Error';
@@ -109,14 +106,12 @@
                     text: text,
                     confirmButtonColor: '#d33'
                 }).then(() => {
-                    // Limpiar URL
                     window.history.replaceState(null, null, window.location.pathname + '?action=login');
                 });
             }
         });
 
         function validarLogin() {
-            // Validación front-end adicional si se desea
             return true;
         }
     </script>

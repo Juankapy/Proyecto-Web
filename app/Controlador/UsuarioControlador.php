@@ -50,6 +50,8 @@ class UsuarioControlador extends Controller {
         }
 
         // Anotaciones Mock (Arrays de ejemplo)
+        // Anotaciones Mock (Guardado para futuro implementation)
+        /*
         $anotaciones = [
              (object) [
             'cancion_titulo' => 'Canción Demo',
@@ -57,6 +59,10 @@ class UsuarioControlador extends Controller {
             'texto' => 'Esta es una anotación de prueba para verificar el diseño.'
             ]
         ];
+        */
+        
+        // Estado actual: Sin anotaciones
+        $anotaciones = [];
         
         // Si quisieras probar el estado vacío:
         // $anotaciones = [];

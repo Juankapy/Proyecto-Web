@@ -93,7 +93,8 @@ class AuthController {
             $db = $database->conectar();
 
             if ($db) {
-                $query = "SELECT usuario_id, nombre_usuario, contrasena, rol FROM usuario WHERE email = :email";
+
+                $query = "SELECT usuario_id, nombre_usuario, contrasena, rol, avatar FROM usuario WHERE email = :email";
                 $stmt = $db->prepare($query);
                 $stmt->bindParam(':email', $email);
                 $stmt->execute();
@@ -106,6 +107,7 @@ class AuthController {
                         $_SESSION['usuario_id'] = $row['usuario_id'];
                         $_SESSION['nombre_usuario'] = $row['nombre_usuario'];
                         $_SESSION['rol'] = $row['rol'];
+                        $_SESSION['avatar'] = $row['avatar']; // Fix: Persist avatar in session
 
                         header("Location: index.php");
                         exit();

@@ -8,6 +8,7 @@ if (!isset($usuario)) {
     ];
 }
 
+/*
 if (!isset($anotaciones)) {
     // Uncomment one of these to test different states
     
@@ -33,6 +34,7 @@ if (!isset($anotaciones)) {
     // Case 2: Empty state
     // $anotaciones = [];
 }
+*/
 
 $extraCss = 'css/estilo-perfil.css';
 require __DIR__ . '/../layouts/header.php';
@@ -72,7 +74,7 @@ require __DIR__ . '/../layouts/header.php';
         
         <?php if (empty($anotaciones)): ?>
             <div class="mensaje-vacio">
-                <p>Aún no has hecho ninguna anotación. ¡Explora canciones para empezar!</p>
+                <p>No hay anotaciones disponibles</p>
             </div>
         <?php else: ?>
             <div class="lista-anotaciones">
@@ -101,15 +103,17 @@ require __DIR__ . '/../layouts/header.php';
         <h3>Configuración de la Cuenta</h3>
         <div class="grid-configuracion">
             <!-- Card 1: Change Password -->
-            <div class="tarjeta-configuracion">
-                <div class="icono-configuracion-contenedor">
-                    <i class="fa-solid fa-key"></i>
+            <a href="index.php?action=editar_perfil" style="text-decoration: none; color: inherit;">
+                <div class="tarjeta-configuracion">
+                    <div class="icono-configuracion-contenedor">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <div class="texto-configuracion">
+                        <h4>Cambiar Contraseña</h4>
+                        <p>Actualiza la seguridad de tu cuenta.</p>
+                    </div>
                 </div>
-                <div class="texto-configuracion">
-                    <h4>Cambiar Contraseña</h4>
-                    <p>Actualiza la seguridad de tu cuenta.</p>
-                </div>
-            </div>
+            </a>
 
             <!-- Card 2: Notifications -->
             <div class="tarjeta-configuracion">
@@ -118,22 +122,13 @@ require __DIR__ . '/../layouts/header.php';
                 </div>
                 <div class="texto-configuracion">
                     <h4>Notificaciones</h4>
-                    <p>Gestiona tus preferencias de avisos.</p>
+                    <p>Gestiona tus notificaciones.</p>
                 </div>
             </div>
 
-            <!-- Card 3: Appearance -->
-            <div class="tarjeta-configuracion">
-                <div class="icono-configuracion-contenedor">
-                    <i class="fa-solid fa-palette"></i>
-                </div>
-                <div class="texto-configuracion">
-                    <h4>Apariencia</h4>
-                    <p>Cambia entre modo claro y oscuro.</p>
-                </div>
-            </div>
 
-            <!-- Card 4: Delete Account -->
+
+            <!-- Card 3: Delete Account -->
             <div class="tarjeta-configuracion peligro">
                 <div class="icono-configuracion-contenedor rojo">
                     <i class="fa-solid fa-trash-can"></i>
